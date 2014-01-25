@@ -1,6 +1,6 @@
 <?php get_header(); ?>	
 
-	<div id="main">
+	<div id="main" class="contaniner">
 
     Loading...
 		

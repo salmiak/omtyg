@@ -45,15 +45,21 @@ var ListView = Backbone.View.extend({
   render: function(){
     this.$el.html( mainTemplate() );
     this.showMoreCards();
-    console.log(this.collection);
   },
   showMoreCards: function(){
-    for(var i = this.index; i < Math.min(this.index + 5, this.collection.length); i++) {
+    var that = this;
+    for(var i = this.index; i < Math.min(this.index + 40, this.collection.length); i++) {
       this.$('#listContainer').append( listPostTemplate( this.collection.at(i).toJSON() ) );
     }
+      
+    // FIXME: trigger on correct timing.
+    setTimeout(function(){
+      that.$('#listContainer').masonry({
+        itemSelector: '.post'
+      });
+    }, 30);
   }
 })
-
 
 // *** RUNTIME ***
 var posts = new Posts();
@@ -64,6 +70,9 @@ $(function(){
     success: function(a){
       posts.fetch({
         success: function(a){
+        
+          console.log(a);
+        
           var listView = new ListView({collection: a});
           listView.render();
         }

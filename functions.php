@@ -8,6 +8,11 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 
 
+add_image_size( 'fp_sm', 300, 300, true );
+add_image_size( 'fp_lg', 630, 630, true );
+
+
+
 //---------------------------------------------------------------------------------
 //	Ta bort blandat skräp från head
 //---------------------------------------------------------------------------------
