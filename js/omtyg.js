@@ -11,8 +11,10 @@ var Post = Backbone.Model.extend({
     d.images = new Medium();
     for (var i=0; i < d.post_meta.images; i++){
       var media = medium.get(d.post_meta['images_'+i+'_image']);
-      media.set('caption',d.post_meta['images_'+i+'_image_caption'][0]);
-      d.images.add(media);
+      if(media) {
+        media.set('caption',d.post_meta['images_'+i+'_image_caption'][0]);
+        d.images.add(media);
+      }
     }
     return d;
   }
@@ -44,20 +46,36 @@ var ListView = Backbone.View.extend({
   el: '#main',
   render: function(){
     this.$el.html( mainTemplate() );
+    
+    this.$('#listContainer').packery({
+      columnWidth: ".gutter-sizer",
+      itemSelector: '.post',
+      gutter: 0
+    });
+    
     this.showMoreCards();
   },
   showMoreCards: function(){
     var that = this;
-    for(var i = this.index; i < Math.min(this.index + 40, this.collection.length); i++) {
-      this.$('#listContainer').append( listPostTemplate( this.collection.at(i).toJSON() ) );
+    var increase = 15;
+    
+    var newEls = [];
+    for(var i = this.index; i < Math.min(this.index + increase, this.collection.length); i++) {
+      var $e = $(listPostTemplate( this.collection.at(i).toJSON() ));
+      this.$('#listContainer').append( $e );
+      newEls.push($e[0]);
     }
-      
-    // FIXME: trigger on correct timing.
-    setTimeout(function(){
-      that.$('#listContainer').masonry({
-        itemSelector: '.post'
-      });
-    }, 30);
+    this.$('#listContainer').packery('appended', newEls);
+    this.$('#listContainer').imagesLoaded(function(){
+      that.$('#listContainer').packery();
+    });
+    
+    this.index += increase;
+    if (this.collection.length < this.index)
+      this.$('.loadBtn').remove();
+  },
+  events: {
+    'click .loadBtn' : 'showMoreCards'
   }
 })
 

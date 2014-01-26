@@ -22,6 +22,7 @@
 	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/bilder/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/bilder/apple-touch-icon.png">	
 	
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Crimson+Text:400,600,400italic,600italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/libs/bootstrap/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
