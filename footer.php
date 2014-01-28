@@ -6,11 +6,11 @@
   <script type="text/template" id="mainTemplate">
   
     <div class="header">
-      <div class="container">
-        <div class="row text-right capitals mini sans-serif">
+      <div class="container"><div class="row">
+        <div class="col-xs-12 text-right capitals mini sans-serif">
           anna@omtyg.se | 0712 34 56 78
         </div>
-      </div>
+      </div></div>
     </div>
   
     <div class="container">
@@ -29,15 +29,17 @@
   <script type="text/template" id="listPostTemplate">
     <% if( post_meta.fp_size[0] == 'fp_lg') { %>
     
-      <div class="post fp-col-lg">
+      <div class="post fp-col-lg"><a href="<%= link %>">
+        <div class="overlay"><h2><%= title %></h2></div>
         <img src="<%= featured_image.attachment_meta.sizes.fp_lg.url %>" width="<%= featured_image.attachment_meta.sizes.fp_lg.width %>" height="<%= featured_image.attachment_meta.sizes.fp_lg.height %>" class="abs-img-responsive" title="<%= title %>" />
-      </div>
+      </a></div>
       
      <% } else { %>
      
-      <div class="post fp-col-sm">
+      <div class="post fp-col-sm"><a href="<%= link %>">
+        <div class="overlay"><h2><%= title %></h2></div>
         <img src="<%= featured_image.attachment_meta.sizes.fp_sm.url %>" width="<%= featured_image.attachment_meta.sizes.fp_sm.width %>" height="<%= featured_image.attachment_meta.sizes.fp_sm.height %>" class="abs-img-responsive" title="<%= title %>" />
-      </div>
+      </a></div>
       
      <% } %>
   </script>

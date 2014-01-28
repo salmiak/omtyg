@@ -79,22 +79,52 @@ var ListView = Backbone.View.extend({
   }
 })
 
+// *** ROUTER ***
+
+var Router = Backbone.Router.extend({
+  routes: {
+    //'post/:slug'  : 'post',
+    '*deafult'           : 'list'
+  },
+  /*
+  post: function(slug){
+  	medium.fetch({
+      success: function(a){
+        posts.fetch({
+          success: function(a){
+          
+            console.log(a);
+          
+            var listView = new ListView({collection: a});
+            listView.render();
+          }
+        })
+      }
+    })
+  },
+  */
+  list: function(){
+  	medium.fetch({
+      success: function(a){
+        posts.fetch({
+          success: function(a){
+          
+            console.log(a);
+          
+            var listView = new ListView({collection: a});
+            listView.render();
+          }
+        })
+      }
+    })
+  },
+})
+
 // *** RUNTIME ***
 var posts = new Posts();
 var medium = new Medium();
+var router = new Router();
   
 $(function(){
-  medium.fetch({
-    success: function(a){
-      posts.fetch({
-        success: function(a){
-        
-          console.log(a);
-        
-          var listView = new ListView({collection: a});
-          listView.render();
-        }
-      })
-    }
-  })
+  Backbone.history.start()
 })
