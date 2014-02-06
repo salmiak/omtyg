@@ -36,3 +36,10 @@
 </head>
 
 <body <?php body_class(); ?>>
+  
+    <div class="header">
+      <?php if(!is_front_page() ) { ?><a href="<?php bloginfo('url'); ?>" class="miniLogo">Omtyg</a><?php } ?>
+      <div class="col-xs-12 text-right capitals mini sans-serif">
+        anna@omtyg.se | 0712 34 56 78
+      </div>
+    </div>

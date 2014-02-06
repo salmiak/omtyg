@@ -1,17 +1,10 @@
 
+  <!--
   <footer id="sidfot" class="container" style="margin-top: 30px"><div class="col-xs-12">
     <p class="text-center">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
   </div></footer><!-- slut sidfot-->
   
   <script type="text/template" id="mainTemplate">
-  
-    <div class="header">
-      <div class="container"><div class="row">
-        <div class="col-xs-12 text-right capitals mini sans-serif">
-          anna@omtyg.se | 0712 34 56 78
-        </div>
-      </div></div>
-    </div>
   
     <div class="container">
       <div class="row"><div class="col-xs-12"><h1 class="capitals text-green"><?php bloginfo('name') ?> <small class="italic non-capitals no-break"><?php bloginfo('description') ?></small></h1></div></div>
