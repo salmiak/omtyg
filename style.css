@@ -150,70 +150,146 @@ a {
 
 /* Img Post */
 
-h1.title {
-  margin-top: 80px;
-}
-.postContent {
-  border-bottom: 1px solid #88b148;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+
+@media (max-width: 768px) { 
+  .single article {
+    margin-top: -60px;
+    position: relative;
+  }
+  .sidebar {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0px auto;
+  }
+  .imgPostContent {
+    position: relative;
+  }
+  .carousel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+  }
+  .carousel-inner,
+  .item,
+  .slideImg {
+    height: 100%;
+  }
+  .carousel-control { width: 20%; }
+  .sizer { width: 100%; height: auto; opacity: 0; }
 }
 
-.carousel-control {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 10%;
-  font-size: 20px;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-  opacity: 1;
-  filter: alpha(opacity=100);
-  -webkit-transition: background 0.2s;
+/* Bigger version */
+@media (min-width: 768px) {
+  .sizer { display: none; } 
+  h1.title {
+    margin-top: 80px;
+  }
+  .postContent {
+    border-bottom: 1px solid #88b148;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .carousel {
+    height: 100%;
+    padding: 0px 0px 60px;
+  }
+  .carousel-inner {
+    padding-bottom: 0px;
+    height: 100%;
+  }
+  .carousel-inner .item {
+    height:100%;
+  }
+  .carousel-indicators.my-carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 0px;
+    z-index: 200;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    margin: 0;
+  }
+  .carousel-indicators.my-carousel-indicators li {
+    display: inline-block;
+    list-style: none;
+    opacity: 0.3;
+    width: auto;
+    height: auto;
+    background: none;
+    text-indent: 0px;
+    border-radius: 0px;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+  }
+  .carousel-indicators.my-carousel-indicators li:hover {
+    opacity: 0.7;
+  }
+  .carousel-indicators.my-carousel-indicators li.active,
+  .carousel-indicators.my-carousel-indicators li.active:hover {
+    opacity: 1;
+  }
+  
+  .imgPostContent {
+    position: fixed;
+    top: 20px;
+    left: 0px;
+    right: 25%;
+    bottom: 0px;
+    background: #fafcf9;
+  }
+  .sidebar {
+    position: fixed;
+    top: 20px;
+    left: 75%;
+    right: 0px;
+    bottom: 0px;
+    padding: 0 15px;
+  }
+  
+  .carousel-control { width: 10%; }
 }
-.carousel-control:hover {
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-.carousel-control.right,
-.carousel-control.left {
-  background: rgba(0,0,0,0.0);
-  background-image: none;
-}
-.carousel-control:hover.right,
-.carousel-control:hover.left {
-  background: rgba(0,0,0,0.05);
-  background-image: none;
-}
-
-.imgPostContent {
-  position: fixed;
-  top: 20px;
-  left: 0px;
-  right: 25%;
-  bottom: 0px;
-  background: #fafcf9;
-}
-.imgPostContent .slideImg {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: 50% 50% no-repeat;
-  background-size: contain;
-}
-.sidebar {
-  position: fixed;
-  top: 20px;
-  left: 75%;
-  right: 0px;
-  bottom: 0px;
-  padding: 0 15px;
-}
-.imgCaption {
-  display: none;
-}
-.imgCaption:first-child {
-  display: block;
-}
+  .carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transition: background 0.2s;
+  }
+  .carousel-control:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  .carousel-control.right,
+  .carousel-control.left {
+    background: rgba(0,0,0,0.0);
+    background-image: none;
+  }
+  .carousel-control:hover.right,
+  .carousel-control:hover.left {
+    background: rgba(0,0,0,0.05);
+    background-image: none;
+  }
+  .imgPostContent .slideImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: 50% 50% no-repeat;
+    background-size: contain;
+  }
+  .imgCaption {
+    display: none;
+  }
+  .imgCaption:first-child {
+    display: block;
+  }
