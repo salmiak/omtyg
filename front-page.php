@@ -1,13 +1,19 @@
 <?php get_header(); ?>	
 
-	<div id="main">
-    <p class="text-center text-muted sans-serif capitals">Loading...</p>
+	<div id="frontPage">
+    <p class="text-center text-muted sans-serif capitals text-green" style="margin: 220px 0 200px; opacity: 0.15; font-size:40px; font-weight:900;">Laddar Omtyg</p>
 	</div><!-- slut main -->
+	
+  <footer id="footer" class="container"><div class="col-xs-12">
+    <p class="text-center text-green sans-serif capitals">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+  </div></footer><!-- slut sidfot-->
 
   <script type="text/template" id="mainTemplate">
-  
     <div class="container">
-      <div class="row"><div class="col-xs-12"><h1 class="frontpageTitle capitals text-green"><?php bloginfo('name') ?> <small class="italic non-capitals no-break serif"><?php bloginfo('description') ?></small></h1></div></div>
+      <div class="row"><div class="col-xs-12"><div class="frontPageHeader border-bottom">
+        <h1 class="frontpageTitle capitals text-green text-center"><?php bloginfo('name') ?></h1>
+        <p class="capitals no-break text-center text-green" style="margin: 0px;"><?php bloginfo('description') ?></p>
+      </div></div></div>
     </div>
       
     <div id="listContainer">

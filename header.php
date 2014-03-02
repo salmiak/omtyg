@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 
@@ -38,8 +38,8 @@
 <body <?php body_class(); ?>>
   
     <div class="header">
-      <?php if(!is_front_page() ) { ?><a href="<?php bloginfo('url'); ?>" class="miniLogo">Omtyg</a><?php } ?>
+      <?php if(!is_front_page() ) { ?><a href="<?php bloginfo('url'); ?>" class="miniLogo sans-serif capitals text-green">Omtyg</a><?php } ?>
       <div class="col-xs-12 text-right capitals mini sans-serif">
-        <a href="mailto:anna@omtyg.se" style="color: inherit">anna@omtyg.se</a>
+        <a href="mailto:anna@omtyg.se" class="text-green">anna@omtyg.se</a>
       </div>
     </div>

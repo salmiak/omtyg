@@ -53,7 +53,7 @@ var ListView = Backbone.View.extend({
     this.pages = o.pages||null;
     console.log(this.pages)
   },
-  el: '#main',
+  el: '#frontPage',
   render: function(){
     this.$el.html( mainTemplate() );
     
@@ -120,13 +120,12 @@ var ListView = Backbone.View.extend({
 
 var Router = Backbone.Router.extend({
   routes: {
-    '*deafult'           : 'list'
+    '*default'           : 'list'
   },
   list: function(){
     
     // Will run on third execution
-    var renderList = _.after(3, function(a){
-      console.log(a);          
+    var renderList = _.after(3, function(a){         
       var listView = new ListView({
         collection: posts,
         pages: pages

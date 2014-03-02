@@ -1,8 +1,4 @@
 
-  <!--
-  <footer id="sidfot" class="container" style="margin-top: 30px"><div class="col-xs-12">
-    <p class="text-center">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
-  </div></footer><!-- slut sidfot-->
   
   <script src="//code.jquery.com/jquery-1.10.2.min.js" charset="utf-8"></script>
   <script src="http://underscorejs.org/underscore-min.js" charset="utf-8"></script>

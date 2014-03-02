@@ -1,6 +1,6 @@
 <?php get_header(); ?>  
 
-  <div id="singlePage">
+  <div id="singlePost">
     
     <!-- starta loopen -->
     <?php while ( have_posts() ) : the_post(); ?>
@@ -13,8 +13,8 @@
       		  <?php if( get_field('images') ):
       		    $index = 0;
       		    while( has_sub_field('images') ): ?>
-                <li data-target="#imgCarousel" data-slide-to="<?php echo $index; ?>" class="<?php if($index==0) echo 'active'; ?>">
-                  <img src="<?php the_sub_field('image'); ?>" height="30px" />
+      		      <li data-target="#imgCarousel" data-slide-to="<?php echo $index; ?>" class="<?php if($index==0) echo 'active'; ?>">
+                  <img src="<?php echo get_sub_field('image')['sizes']['medium']; ?>" height="30px" />
                 </li>
             	<?php $index++;
             	endwhile; ?>
@@ -28,7 +28,7 @@
       		    $index = 0;
       		    while( has_sub_field('images') ): ?>
       		      <div class="item <?php if($index==0) echo 'active'; ?>">
-              		<div class="slideImg" style="background-image: url(<?php the_sub_field('image'); ?>)"></div>
+              		<div class="slideImg" style="background-image: url(<?php echo get_sub_field('image')['url']; ?>)"></div>
       		      </div>
             	<?php $index++;
             	endwhile; ?>
@@ -43,11 +43,15 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
-        <?php get_field('images');
-        while( has_sub_field('images') ): ?>
-        <img src="<?php the_sub_field('image'); ?>" class="sizer img-responsive" />
-        <?php break; 
-        endwhile; ?>
+        
+        <?php $index = 0;
+        if( get_field('images') ):
+        while( has_sub_field('images') ): 
+          if($index == 0) : ?>
+          <img src="<?php echo get_sub_field('image')['url']; ?>" class="sizer img-responsive" />
+          <?php endif;
+          $index++; 
+        endwhile; endif; ?>
         
   		</article>
     
