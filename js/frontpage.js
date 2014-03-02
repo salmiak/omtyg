@@ -19,7 +19,9 @@ var Post = Backbone.Model.extend({
     return d;
   }
 });
-var Page = Post.extend();
+var Page = Post.extend({
+  urlRoot: baseUrl + '/wp-json.php/pages',
+});
 // Media Model
 var Media = Backbone.Model.extend({
   idAttribute: 'ID',
@@ -75,7 +77,7 @@ var ListView = Backbone.View.extend({
       var pages = this.pages.filter(function(p){ return p.get('post_meta') && parseInt( p.get('post_meta').index[0] ) == 0; });
       if(pages) {
         for(var j in pages) {
-          $p = $(listPostTemplate( pages[j].toJSON() ))
+          $p = $(listPostTemplate( {m:pages[j].toJSON(), s:{isPage:true} } ))
           this.$('#listContainer').append( $p );
           newEls.push($p[0]);
         }
@@ -85,7 +87,7 @@ var ListView = Backbone.View.extend({
     for(var i = this.index; i < Math.min(this.index + increase, this.collection.length); i++) {
     
       // Add post
-      var $e = $(listPostTemplate( this.collection.at(i).toJSON() ));
+      var $e = $(listPostTemplate( {m:this.collection.at(i).toJSON(), s:{isPage:false} } ));
       this.$('#listContainer').append( $e );
       newEls.push($e[0]);
       
@@ -93,7 +95,7 @@ var ListView = Backbone.View.extend({
       var pages = this.pages.filter(function(p){ return p.get('post_meta') && parseInt( p.get('post_meta').index[0] ) == i+1; });
       if(pages) {
         for(var j in pages) {
-          $p = $(listPostTemplate( pages[j].toJSON() ))
+          $p = $(listPostTemplate( {m:pages[j].toJSON(), s:{isPage:true} } ))
           this.$('#listContainer').append( $p );
           newEls.push($p[0]);
         }

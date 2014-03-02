@@ -52,7 +52,7 @@
   		</article>
     
 		  <aside class="sidebar">
-  		  <h1 class="title"><?php the_title() ?></h1>
+  		  <h1 class="title capitals"><?php the_title() ?></h1>
   		  <div class="postContent"><?php the_content(); ?></div>
   		  <div id="capCarousel" class="capSlider">
     		  <?php if( get_field('images') ): 
