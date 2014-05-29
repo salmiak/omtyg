@@ -44,6 +44,7 @@ body {
   background: #fafcf9 url(img/bg.png);
   background-size: 295px;
   font-family: 'Crimson Text', 'Garamond', serif;
+  font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Montserrat', Arial, sans-serif;
@@ -286,17 +287,19 @@ blockquote {
     position: fixed;
     top: 20px;
     left: 0px;
-    right: 25%;
+    right: 34%;
     bottom: 0px;
     background: rgba(255,255,255,0.3);
   }
   .sidebar {
     position: fixed;
     top: 20px;
-    left: 75%;
+    left: 66%;
     right: 0px;
     bottom: 0px;
     padding: 0 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   
   .carousel-control { width: 10%; }

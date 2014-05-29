@@ -28,7 +28,7 @@
       		    $index = 0;
       		    while( has_sub_field('images') ): ?>
       		      <div class="item <?php if($index==0) echo 'active'; ?>">
-              		<div class="slideImg" style="background-image: url(<?php echo get_sub_field('image')['url']; ?>)"></div>
+              		<div class="slideImg" style="background-image: url(<?php echo get_sub_field('image')['sizes']['large']; ?>)"></div>
       		      </div>
             	<?php $index++;
             	endwhile; ?>
@@ -56,7 +56,7 @@
   		</article>
     
 		  <aside class="sidebar">
-  		  <h1 class="title capitals"><?php the_title() ?></h1>
+  		  <h2 class="title capitals"><?php the_title() ?></h2>
   		  <div class="postContent"><?php the_content(); ?></div>
   		  <div id="capCarousel" class="capSlider">
     		  <?php if( get_field('images') ): 
