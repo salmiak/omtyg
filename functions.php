@@ -45,4 +45,146 @@ function add_google_analytics() {
 }
 add_action('wp_footer', 'add_google_analytics');
 
+//---------------------------------------------------------------------------------
+//  Advanced Custom Fields
+//---------------------------------------------------------------------------------
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_page',
+		'title' => 'Page',
+		'fields' => array (
+			array (
+				'key' => 'field_53124210b1a9d',
+				'label' => 'Index på Förstasidan',
+				'name' => 'index',
+				'type' => 'number',
+				'instructions' => 'På vilken plats på förstasidan ska denna visas. Sätter du 0 kommer den innan alla andra inlägg.',
+				'required' => 1,
+				'default_value' => 0,
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => 0,
+				'max' => '',
+				'step' => 1,
+			),
+			array (
+				'key' => 'field_5312fc4ca1800',
+				'label' => 'Storlek på förstasidan',
+				'name' => 'fp_size',
+				'type' => 'select',
+				'instructions' => 'Hur stor ska denna sida vara på förstasidans rutnät.',
+				'required' => 1,
+				'choices' => array (
+					'fp_sm' => 'Liten',
+					'fp_lg' => 'Stor',
+				),
+				'default_value' => 'fp_sm',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_post',
+		'title' => 'Post',
+		'fields' => array (
+			array (
+				'key' => 'field_52e38aada1684',
+				'label' => 'Storlek på förstasidan',
+				'name' => 'fp_size',
+				'type' => 'select',
+				'instructions' => 'Hur stor ska detta inlägga vara på förstasidans rutnät.',
+				'required' => 1,
+				'choices' => array (
+					'fp_sm' => 'Liten',
+					'fp_lg' => 'Stor',
+				),
+				'default_value' => 'fp_sm',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_52dc03323782e',
+				'label' => 'Bilder',
+				'name' => 'images',
+				'type' => 'repeater',
+				'sub_fields' => array (
+					array (
+						'key' => 'field_52dc05065eca5',
+						'label' => 'Bild',
+						'name' => 'image',
+						'type' => 'image',
+						'required' => 1,
+						'column_width' => 30,
+						'save_format' => 'object',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+					),
+					array (
+						'key' => 'field_52dc05205eca6',
+						'label' => 'Bildtext / Beskrivning',
+						'name' => 'image_caption',
+						'type' => 'textarea',
+						'column_width' => 70,
+						'default_value' => '',
+					),
+				),
+				'row_min' => '',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Add Image',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+				0 => 'excerpt',
+				1 => 'custom_fields',
+				2 => 'discussion',
+				3 => 'comments',
+				4 => 'slug',
+				5 => 'author',
+				6 => 'format',
+				7 => 'tags',
+				8 => 'send-trackbacks',
+			),
+		),
+		'menu_order' => 0,
+	));
+}
+
+
 ?>
