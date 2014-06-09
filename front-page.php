@@ -26,16 +26,17 @@
   </script>
   
   <script type="text/template" id="listPostTemplate">
+      
     <% if( m.post_meta.fp_size[0] == 'fp_lg') { %>
     
-      <div class="post fp-col-lg"><a href="<%= m.link %>">
+      <div class="post fp-col-lg <%= (m.post_meta && m.post_meta.forSale && m.post_meta.forSale[0]=='1'?'forSale':'') %>"><a href="<%= m.link %>">
         <div class="overlay <%= (s.isPage?'isPage':'') %>"><h2 class="capitals text-center"><%= m.title %></h2></div>
         <img src="<%= m.featured_image.attachment_meta.sizes.fp_lg.url %>" width="<%= m.featured_image.attachment_meta.sizes.fp_lg.width %>" height="<%= m.featured_image.attachment_meta.sizes.fp_lg.height %>" class="abs-img-responsive" title="<%= m.title %>" />
       </a></div>
       
     <% } else { %>
      
-      <div class="post fp-col-sm"><a href="<%= m.link %>">
+      <div class="post fp-col-sm <%= (m.post_meta && m.post_meta.forSale && m.post_meta.forSale[0]=='1'?'forSale':'') %>"><a href="<%= m.link %>">
         <div class="overlay <%= (s.isPage?'isPage':'') %>"><h2 class="capitals text-center"><%= m.title %></h2></div>
         <img src="<%= m.featured_image.attachment_meta.sizes.fp_sm.url %>" width="<%= m.featured_image.attachment_meta.sizes.fp_sm.width %>" height="<%= m.featured_image.attachment_meta.sizes.fp_sm.height %>" class="abs-img-responsive" title="<%= m.title %>" />
       </a></div>

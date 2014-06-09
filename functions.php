@@ -125,6 +125,15 @@ if(function_exists("register_field_group"))
 				'multiple' => 0,
 			),
 			array (
+				'key' => 'field_53961c860ece0',
+				'label' => 'Till salu',
+				'name' => 'forSale',
+				'type' => 'true_false',
+				'instructions' => 'Sätt denna till True för att visa "Till salu"-bannern.',
+				'message' => 'Visa "Till Salu"-banner.',
+				'default_value' => 0,
+			),
+			array (
 				'key' => 'field_52dc03323782e',
 				'label' => 'Bilder',
 				'name' => 'images',

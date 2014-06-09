@@ -127,6 +127,44 @@ blockquote {
   position: relative;
 }
 
+.forSale::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 400;
+  border: 20px solid transparent;
+  border-bottom-color: #FFF;
+  width: 120px;
+  -webkit-transform: rotate3d(0,0,1,45deg) translate3d(28px,-12px,0);
+  -moz-transform: rotate3d(0,0,1,45deg) translate3d(28px,-12px,0);
+  -o-transform: rotate3d(0,0,1,45deg) translate3d(28px,-12px,0);
+  transform: rotate3d(0,0,1,45deg) translate3d(28px,-12px,0);
+}
+
+.forSale::before {
+  display: block;
+  content: 'Till salu';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 500;
+  width: 120px;
+  -webkit-transform: rotate3d(0,0,1,45deg) translate3d(34px,6px,0);
+  -moz-transform: rotate3d(0,0,1,45deg) translate3d(34px,6px,0);
+  -o-transform: rotate3d(0,0,1,45deg) translate3d(34px,6px,0);
+  transform: rotate3d(0,0,1,45deg) translate3d(34px,6px,0);
+  text-align: center;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #324a0d;
+}
+
 #listContainer {
   box-sizing: border-box;
   width: 95% !important;
