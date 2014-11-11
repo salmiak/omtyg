@@ -9,38 +9,42 @@ var Post = Backbone.Model.extend({
   urlRoot: baseUrl + '/wp-json.php/posts',
   parse: function(d){
     d.images = new Medium();
-    for (var i=0; i < d.post_meta.images; i++){
-      var media = new Media({ID: d.post_meta['images_'+i+'_image'][0]});
-      media.set('caption',d.post_meta['images_'+i+'_image_caption'][0]);
+    for (var i in d.omtyg_post_images){
+      var media = new Media(d.omtyg_post_images[i].image);
+      media.set('caption',d.omtyg_post_images[i].image_caption);
       d.images.add(media);
     }
     return d;
   }
 });
 var Page = Post.extend({
-  urlRoot: baseUrl + '/wp-json.php/pages',
+  urlRoot: baseUrl + '/wp-json/pages',
 });
 // Media Model
 var Media = Backbone.Model.extend({
-  idAttribute: 'ID',
-  urlRoot: baseUrl + '/wp-json.php/media'
+  idAttribute: 'id',
+  urlRoot: baseUrl + '/wp-json/media',
+  parse: function(d){
+    d.id = d.ID;
+    return d;
+  }
 });
 
 // *** COLLECTIONS ***
 // Posts Collection
 var Posts = Backbone.Collection.extend({
   model: Post,
-  url: baseUrl + '/wp-json.php/posts',
+  url: baseUrl + '/wp-json/posts',
 })
 // Posts Collection
 var Pages = Backbone.Collection.extend({
   model: Page,
-  url: baseUrl + '/wp-json.php/pages',
+  url: baseUrl + '/wp-json/pages',
 })
 // Posts Collection
 var Medium = Backbone.Collection.extend({
   model: Media,
-  url: baseUrl + '/wp-json.php/media'
+  url: baseUrl + '/wp-json/media'
 })
 
 // *** VIEWS ***

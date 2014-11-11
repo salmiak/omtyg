@@ -12,6 +12,17 @@ add_image_size( 'fp_sm', 400, 400, true );
 add_image_size( 'fp_lg', 600, 600, true );
 
 
+//---------------------------------------------------------------------------------
+//	Lägg till meta-data om bilder på post-json
+//---------------------------------------------------------------------------------
+
+add_filter( 'json_prepare_post', function ($data, $post, $context) {
+	// $data['omtyg_post_images'] = 	get_field('images', $post['ID']); // Dessa används ej, men lägger på en hel del laddningstid.
+	$data['omtyg_fp_size'] = 	get_field('fp_size', $post['ID']);
+	$data['omtyg_forSale'] = 	get_field('forSale', $post['ID']);
+	return $data;
+}, 10, 3 );
+
 
 //---------------------------------------------------------------------------------
 //	Ta bort blandat skräp från head
@@ -31,7 +42,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 //---------------------------------------------------------------------------------
 //	Lägg till Google Analytics i footern, ändra UA-XXXXX-X till din egen tracking-kod
 //---------------------------------------------------------------------------------
-function add_google_analytics() {	
+function add_google_analytics() {
 	echo "<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
