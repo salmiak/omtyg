@@ -15,10 +15,6 @@
 	
 	<title><?php wp_title('&raquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
 	
-	<!-- 
-		Om du lägger ikonerna i din webbrot så kan du ta bort de här raderna nedan, men vill du att det ska fungera för Android med så bör du behålla dem. 
-		Och vill du ha Android 2.1-stöd så måste du också lägga till rel="apple-touch-icon-precomposed".
-	-->
 	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/bilder/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/bilder/apple-touch-icon.png">	
 	
@@ -26,6 +22,12 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/libs/bootstrap/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+	<?php if( has_post_thumbnail() ) { 
+	  $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+	?>
+	  <meta property="og:image" content="<?php echo $large_image_url[0]; ?>" /> 
+	<?php } ?>
 	
 	<!--[if IE]>
 		<script src="http://ajax.cdnjs.com/ajax/libs/modernizr/1.7/modernizr-1.7.min.js"></script>
