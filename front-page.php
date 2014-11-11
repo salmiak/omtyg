@@ -5,7 +5,7 @@
 	</div><!-- slut main -->
 	
   <footer id="footer" class="container"><div class="col-xs-12">
-    <p class="text-center text-green sans-serif capitals">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+    <p class="text-center text-green sans-serif capitals">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.facebook.com/omtyg" target="_blank">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://instagram.com/omtyg.se" target="_blank">Instagram</a></p>
   </div></footer><!-- slut sidfot-->
 
   <script type="text/template" id="mainTemplate">
@@ -21,7 +21,7 @@
     </div>
       
     <div class="container text-center" style="margin-top: 30px">
-      <button class="btn btn-default loadBtn">Load more</button>
+      <button class="btn btn-default loadBtn">Ladda fler inlägg</button>
     </div>
   </script>
   
