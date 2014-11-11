@@ -10,11 +10,9 @@ var Post = Backbone.Model.extend({
   parse: function(d){
     d.images = new Medium();
     for (var i=0; i < d.post_meta.images; i++){
-      var media = medium.get(d.post_meta['images_'+i+'_image']);
-      if(media) {
-        media.set('caption',d.post_meta['images_'+i+'_image_caption'][0]);
-        d.images.add(media);
-      }
+      var media = new Media({ID: d.post_meta['images_'+i+'_image'][0]});
+      media.set('caption',d.post_meta['images_'+i+'_image_caption'][0]);
+      d.images.add(media);
     }
     return d;
   }
@@ -57,13 +55,13 @@ var ListView = Backbone.View.extend({
     var that = this;
 
     this.$el.html( mainTemplate() );
-    
+
     this.$('#listContainer').packery({
       columnWidth: ".gutter-sizer",
       itemSelector: '.post',
       gutter: 0
     });
-    
+
     $(document).endlessScroll({
       bottomPixels: 800,
       callback: function(){
@@ -77,10 +75,10 @@ var ListView = Backbone.View.extend({
 
     var that = this;
     var increase = 10;
-    
+
     // Element array that will be pushed to packery.js
     var newEls = [];
-    
+
     // Get pages to display before posts and show them - only run on first call when index is 0
     if(this.index == 0) {
       var pages = this.pages.filter(function(p){ return p.get('post_meta') && parseInt( p.get('post_meta').index[0] ) == 0; });
@@ -92,14 +90,14 @@ var ListView = Backbone.View.extend({
         }
       }
     }
-    
+
     for(var i = this.index; i < Math.min(this.index + increase, this.collection.length); i++) {
-    
+
       // Add post
       var $e = $(listPostTemplate( {m:this.collection.at(i).toJSON(), s:{isPage:false} } ));
       this.$('#listContainer').append( $e );
       newEls.push($e[0]);
-      
+
       // Get eventual pages on this index and add them
       var pages = this.pages.filter(function(p){ return p.get('post_meta') && parseInt( p.get('post_meta').index[0] ) == i+1; });
       if(pages) {
@@ -109,13 +107,13 @@ var ListView = Backbone.View.extend({
           newEls.push($p[0]);
         }
       }
-      
+
     }
     this.$('#listContainer').packery('appended', newEls);
     this.$('#listContainer').imagesLoaded(function(){
       that.$('#listContainer').packery();
     });
-    
+
     this.index += increase;
     if (this.collection.length < this.index)
       this.$('.loadBtn').remove();
@@ -132,22 +130,19 @@ var Router = Backbone.Router.extend({
     '*default'           : 'list'
   },
   list: function(){
-    
+
     // Will run on third execution
-    var renderList = _.after(3, function(a){         
+    var renderList = _.after(2, function(a){
       var listView = new ListView({
         collection: posts,
         pages: pages
       });
       listView.render();
     });
-    
-  	medium.fetch({
-      success: renderList
-    });    
+
     posts.fetch({
       success: renderList
-    });   
+    });
     pages.fetch({
       success: renderList
     });
@@ -157,9 +152,8 @@ var Router = Backbone.Router.extend({
 // *** RUNTIME ***
 var posts = new Posts();
 var pages = new Pages();
-var medium = new Medium();
 var router = new Router();
-  
+
 $(function(){
   Backbone.history.start()
 })
