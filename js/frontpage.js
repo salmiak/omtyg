@@ -51,10 +51,11 @@ var ListView = Backbone.View.extend({
   initialize: function(o){
     this.index = 0;
     this.pages = o.pages||null;
-    console.log(this.pages)
   },
   el: '#frontPage',
   render: function(){
+    var that = this;
+
     this.$el.html( mainTemplate() );
     
     this.$('#listContainer').packery({
@@ -63,9 +64,17 @@ var ListView = Backbone.View.extend({
       gutter: 0
     });
     
+    $(document).endlessScroll({
+      bottomPixels: 800,
+      callback: function(){
+        that.showMoreCards();
+      }
+    })
+
     this.showMoreCards();
   },
   showMoreCards: function(){
+
     var that = this;
     var increase = 10;
     
