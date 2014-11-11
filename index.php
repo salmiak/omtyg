@@ -1,32 +1,27 @@
-<?php get_header(); ?>  
+<?php get_header(); ?>
 
-  <div id="singlePage" class="wrapper">
-    <div class="container_6">
-    
+  <div id="singlePage">
+
     <!-- starta loopen -->
     <?php while ( have_posts() ) : the_post(); ?>
-    
-  		<article class="inside withPadding">
-		    <?php echo get_the_post_thumbnail( $post_id, 'topImage', array( 'class' => 'topimg responsive' ) ) ?> 
-  		  <div class="content">
-  		    <?php the_dateIcon( $post ); ?>
-    		  <h1 class="title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h1>
-  		    <div class="cats"><?php echo get_cat_list($post);  ?></div>
-  		    <?php the_content() ?>
-    		  <p class="text-right"><a href="<?php the_permalink(); ?>">Läs mer</a></p>
-    		  <div class="clear"></div>
-  		  </div>
-  		  
-  		</article>
+
+      <article class="container"><div class="row">
+        <?php if ( has_post_thumbnail()) {
+         $image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'fp_lg');
+         echo '<div class="col-xs-12 col-sm-6 col-lg-5 col-lg-offset-1">';
+         echo '<img src="' . $image_url[0] . '" width="'. $image_url[1] .'"  height="'. $image_url[2] .'" class="img-responsive" >';
+         echo '</div>';
+       } ?>
+        <div class="col-xs-12 col-sm-6 col-lg-5">
+          <h1 class="title capitals"><?php the_title() ?></h1>
+          <div class="postContent"><?php the_content(); ?></div>
+        </div>
+      </div></article>
+
   		<div class="clear"></div>
-    
+
     <?php endwhile; ?>
 
-    </div>
-    <div class="container_3"><div class="inside">
-    		<?php get_sidebar(); ?>
-    </div></div>
-    <div class="clear"></div>
   </div>
 
 <?php get_footer(); ?>
